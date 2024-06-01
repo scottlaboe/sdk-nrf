@@ -21,7 +21,6 @@ osource "modules/mbedtls/Kconfig.psa"
 
 config MBEDTLS_PSA_CRYPTO_EXTERNAL_RNG
 	bool
-	default y
 
 rsource "src/core/Kconfig"
 

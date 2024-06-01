@@ -345,7 +345,6 @@ config MBEDTLS_HMAC_DRBG_C
 
 config MBEDTLS_PSA_CRYPTO_EXTERNAL_RNG
 	bool
-	default y
 
 config MBEDTLS_ENTROPY_C
 	bool
