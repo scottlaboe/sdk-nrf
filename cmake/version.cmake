@@ -1,5 +1,15 @@
 math(EXPR NCS_VERSION_CODE "(${NCS_VERSION_MAJOR} << 16) + (${NCS_VERSION_MINOR} << 8)  + (${NCS_VERSION_PATCH})")
-math(EXPR NCS_VERSION_NUMBER ${NCS_VERSION_CODE} OUTPUT_FORMAT HEXADECIMAL)
+
+include(${ZEPHYR_BASE}/cmake/hex.cmake)
+
+# to_hex is made available by ${ZEPHYR_BASE}/cmake/hex.cmake
+to_hex(${NCS_VERSION_CODE} NCS_VERSION_NUMBER)
+
+if(DEFINED BUILD_VERSION)
+  set(ncs_banner_version BUILD_VERSION)
+else()
+  set(ncs_banner_version NCS_BUILD_VERSION)
+endif()
 
 add_custom_command(
   OUTPUT ${PROJECT_BINARY_DIR}/include/generated/ncs_version.h
